@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:id="@+id/questionTV"
-        android:text="April has 30 days."
+        android:text=""
         />
 
 
@@ -26,20 +26,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/trueBTN"
-            android:text="TRUE"
+            android:text="@string/true_btn_text"
             />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/falseBTN"
-            android:text="FALSE"
+            android:text="@string/false_btn_text"
             />
     </LinearLayout>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/doneBTN"
-            android:text="DONE"
+            android:id="@+id/nextBTN"
+            android:text="@string/next"
             />
 
 
