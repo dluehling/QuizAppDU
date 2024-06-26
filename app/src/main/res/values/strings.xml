@@ -4,9 +4,9 @@
     <string name="true_btn_text">TRUE</string>
     <string name="q1_text">The Function for the Create Task must have a parameter.</string>
     <string name="q2_text">Iteration is looping</string>
-    <string name="sequencing_is_always_repeating_code">Sequencing is always repeating code.</string>
-    <string name="there_are_8_bytes_in_a_bit">There are 8 bytes in a bit.</string>
-    <string name="a_boolean_returns_either_true_or_false">A Boolean returns either true or false.</string>
+    <string name="q3_text">Sequencing is always repeating code.</string>
+    <string name="q4_text">There are 8 bytes in a bit.</string>
+    <string name="q5_text">A Boolean returns either true or false.</string>
     <string name="correct">Correct</string>
     <string name="incorrect">Incorrect</string>
     <string name="new_score_on_csp_quiz">New score on CSP Quiz</string>
@@ -16,4 +16,10 @@
     <string name="false_btn_text">FALSE</string>
     <string name="next">Next</string>
     <string name="scoreactivity">ScoreActivity</string>
+    <string name="hint_btn">Get a Hint</string>
+    <string name="q1_hint_url">https://help.codehs.com/en/articles/661536-ap-csp-performance-task</string>
+    <string name="q2_hint_url">https://www.khanacademy.org/computing/ap-computer-science-principles/algorithms-101/building-algorithms/a/the-building-blocks-of-algorithms</string>
+    <string name="q3_hint_url">https://www.khanacademy.org/computing/ap-computer-science-principles/algorithms-101/building-algorithms/a/the-building-blocks-of-algorithms</string>
+    <string name="q4_hint_url">https://en.wikipedia.org/wiki/Byte</string>
+    <string name="q5_hint_url">https://en.wikipedia.org/wiki/Boolean</string>
 </resources>
