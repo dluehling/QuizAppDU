@@ -17,10 +17,11 @@ import androidx.core.view.WindowInsetsCompat;
 public class ScoreActivity extends AppCompatActivity {
 
     TextView ScoreLabelTV;
-    TextView ScoreTV;
+    TextView ScoreTV, PrevScoreTV;
     Intent receivedIntent;
     int newScore;
     Button emailBTN;
+    int previousScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +32,15 @@ public class ScoreActivity extends AppCompatActivity {
         ScoreLabelTV = (TextView) findViewById(R.id.ScoreLabelTV);
         ScoreTV = (TextView) findViewById(R.id.ScoreTV);
         emailBTN = (Button) findViewById(R.id.emailBTN);
+        PrevScoreTV = (TextView) findViewById(R.id.prefScoreTV);
         newScore = receivedIntent.getIntExtra(getString(R.string.scoreactivity), 0);
+        previousScore = receivedIntent.getIntExtra(getString(R.string.scoreactivityprev), 0);
         String msg = "" + newScore;
         ScoreTV.setText(msg);
+        String PrevScoreMsg = "Previous Score: " + previousScore;
+        PrevScoreTV.setText(PrevScoreMsg);
+
+
 
         emailBTN.setOnClickListener(new View.OnClickListener() {
             @Override

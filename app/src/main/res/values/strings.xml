@@ -22,4 +22,5 @@
     <string name="q3_hint_url">https://www.khanacademy.org/computing/ap-computer-science-principles/algorithms-101/building-algorithms/a/the-building-blocks-of-algorithms</string>
     <string name="q4_hint_url">https://en.wikipedia.org/wiki/Byte</string>
     <string name="q5_hint_url">https://en.wikipedia.org/wiki/Boolean</string>
+    <string name="scoreactivityprev">scoreActivityPrev</string>
 </resources>

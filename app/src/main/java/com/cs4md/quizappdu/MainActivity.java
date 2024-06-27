@@ -130,13 +130,12 @@ public class MainActivity extends AppCompatActivity {
                     questionTV.setText(currentQuestion.getqText());
                 } else {
                     //move to score activity
-
                     //declare and initialize intent
                     Intent myIntent = new Intent(MainActivity.this, ScoreActivity.class);
 
                     //put extra info in if needed
                     myIntent.putExtra(getString(R.string.scoreactivity), score);
-
+                    myIntent.putExtra(getString(R.string.scoreactivityprev), prefScore);
                     //start the new activity
                     startActivity(myIntent);
                 }
