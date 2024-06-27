@@ -1,6 +1,7 @@
 package com.cs4md.quizappdu;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import android.content.SharedPreferences;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -22,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     //1. declaring my UI elements and other variables
     Button trueBTN, falseBTN, nextBTN, hintBTN;
-    TextView questionTV;
+    TextView questionTV, prevScoreValTV;
     Toast myToast;
     Toast hintToast;
     int score;
@@ -31,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
     Question[] questions;
     int currentIndex;
 
+    private SharedPreferences mPreferences;
+    private String sharedPrefFile= "com.cs4md.android.quizappdu";
+    private final String PREVIOUS_SCORE_KEY   = "SCORE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         nextBTN = (Button) findViewById(R.id.nextBTN);
         hintBTN = (Button) findViewById(R.id.hintBTN);
         questionTV = (TextView) findViewById(R.id.questionTV);
+        prevScoreValTV = (TextView) findViewById(R.id.prevScoreValueTV);
+
         score = 0;
         message = "";
         q1 = new Question(getString(R.string.q1_text), true, getString(R.string.q1_hint_url));
@@ -55,7 +62,13 @@ public class MainActivity extends AppCompatActivity {
         currentQuestion = questions[currentIndex];
         questionTV.setText(currentQuestion.getqText());
 
+        mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
+        //Read initial Value
+        int prefScore = mPreferences.getInt(PREVIOUS_SCORE_KEY, 0);
 
+        //Set the Previous Score
+        String prevScoreString = " "+ prefScore;    
+        prevScoreValTV.setText(prevScoreString);
 
         //3. do whatever you want your app to do with its UI elements
         trueBTN.setOnClickListener(new View.OnClickListener() {
@@ -104,6 +117,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 currentIndex++;
+                SharedPreferences.Editor preferencesEditor = mPreferences.edit();
+                preferencesEditor.putInt(PREVIOUS_SCORE_KEY, score);
+                preferencesEditor.apply();
+                //String prevScoreString = " "+ score;
+                //prevScoreValTV.setText(prevScoreString);
+
+                
                 if (currentIndex < questions.length) {
                     //advance and show the next question
                     currentQuestion = questions[currentIndex];

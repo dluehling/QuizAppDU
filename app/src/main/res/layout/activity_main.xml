@@ -43,13 +43,37 @@
             android:id="@+id/nextBTN"
             android:text="@string/next"
             />
-
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id = "@+id/hintBTN"
-        android:text="@string/hint_btn"
-        />
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id = "@+id/hintBTN"
+            android:text="@string/hint_btn"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/prevScoreTV"
+            android:text="Previous Score: "
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/prevScoreValueTV"
+            android:text="0"
+            android:textSize="20sp"
+            />
+
+    </LinearLayout>
 
     <WebView
         android:id="@+id/hintWV"
