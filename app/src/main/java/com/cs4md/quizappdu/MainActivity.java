@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     Question q1, q2, q3, q4, q5, currentQuestion;
     Question[] questions;
     int currentIndex;
+    boolean qFlag;
 
     private SharedPreferences mPreferences;
     private String sharedPrefFile= "com.cs4md.android.quizappdu";
@@ -48,9 +49,10 @@ public class MainActivity extends AppCompatActivity {
         nextBTN = (Button) findViewById(R.id.nextBTN);
         hintBTN = (Button) findViewById(R.id.hintBTN);
         questionTV = (TextView) findViewById(R.id.questionTV);
-        prevScoreValTV = (TextView) findViewById(R.id.prevScoreValueTV);
+        //prevScoreValTV = (TextView) findViewById(R.id.prevScoreValueTV);
 
         score = 0;
+        qFlag = false;
         message = "";
         q1 = new Question(getString(R.string.q1_text), true, getString(R.string.q1_hint_url));
         q2 = new Question(getString(R.string.q2_text), true, getString(R.string.q2_hint_url));
@@ -67,37 +69,51 @@ public class MainActivity extends AppCompatActivity {
         int prefScore = mPreferences.getInt(PREVIOUS_SCORE_KEY, 0);
 
         //Set the Previous Score
-        String prevScoreString = " "+ prefScore;    
-        prevScoreValTV.setText(prevScoreString);
+        //String prevScoreString = " "+ prefScore;
+        //prevScoreValTV.setText(prevScoreString);
 
         //3. do whatever you want your app to do with its UI elements
         trueBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (currentQuestion.isCorrectAnswer() == true) {
-                    message = getString(R.string.correct);
-                    score += 5;
-                } else {
-                    message = getString(R.string.incorrect);
-                }
+                if (!qFlag) {
+                    qFlag = true;
+                    if (currentQuestion.isCorrectAnswer() == true) {
+                        message = getString(R.string.correct);
+                        score += 5;
+                    } else {
+                        message = getString(R.string.incorrect);
+                    }
 
-                myToast = Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT);
-                myToast.show();
+                    myToast = Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG);
+                    myToast.show();
+                }
+                else {
+                    message = "You already answered this question.";
+                    myToast = Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT);
+                    myToast.show();
+                }
             }
         });
 
         falseBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (currentQuestion.isCorrectAnswer() == false) {
-                    message = getString(R.string.correct);
-                    score += 5;
-                } else {
-                    message = getString(R.string.incorrect);
-                }
+                if (!qFlag) {
+                    if (currentQuestion.isCorrectAnswer() == false) {
+                        message = getString(R.string.correct);
+                        score += 5;
+                    } else {
+                        message = getString(R.string.incorrect);
+                    }
 
-                myToast = Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT);
-                myToast.show();
+                    myToast = Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT);
+                    myToast.show();
+                } else {
+                    message = "You already answered this question.";
+                    myToast = Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT);
+                    myToast.show();
+                }
             }
         });
 
@@ -117,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 currentIndex++;
+                qFlag = false;
                 SharedPreferences.Editor preferencesEditor = mPreferences.edit();
                 preferencesEditor.putInt(PREVIOUS_SCORE_KEY, score);
                 preferencesEditor.apply();
