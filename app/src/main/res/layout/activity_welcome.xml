@@ -8,7 +8,7 @@
     >
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="300dp"
         android:gravity="center"
         android:id="@+id/welcomeTV"
         android:textSize="40sp"
@@ -17,18 +17,17 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:gravity="center"
         android:id="@+id/PrevScoreTV"
         android:textSize="30sp"
         android:text="Your Previous Score: "
         />
 
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:gravity="bottom"
         android:id="@+id/startBTN"
         android:textSize="40sp"
         android:text="Start the Quiz"

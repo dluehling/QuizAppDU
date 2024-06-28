@@ -16,13 +16,11 @@ import androidx.core.view.WindowInsetsCompat;
 public class WelcomeActivity extends AppCompatActivity {
 
     TextView welcomeTV, PrevScoreTV;
-
     Button startBTN;
     //int previousScore;
     private SharedPreferences mPreferences;
     private String sharedPrefFile= "com.cs4md.android.quizappdu";
     private final String PREVIOUS_SCORE_KEY   = "SCORE";
-
 
 
     @Override
@@ -35,13 +33,14 @@ public class WelcomeActivity extends AppCompatActivity {
         PrevScoreTV = (TextView) findViewById(R.id.PrevScoreTV);
 
         mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
-//Read initial Value
+        //Read initial Value
         int previousScore = mPreferences.getInt(PREVIOUS_SCORE_KEY, 0);
 
-//Set the Previous Score
+        //Set the Previous Score
         String PrevScoreMsg = "Previous Score: " + previousScore;
         PrevScoreTV.setText(PrevScoreMsg);
 
+        //start the main quiz activity when the start button is clicked
         startBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,7 +56,5 @@ public class WelcomeActivity extends AppCompatActivity {
                 }
 
         });
-
-
     }
 }

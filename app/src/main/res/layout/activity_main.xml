@@ -7,6 +7,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     >
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="75dp"
+        android:fontFamily="casual"
+        android:gravity="center_horizontal|top"
+        android:backgroundTint="#2200FF"
+        android:text="CSP Quiz"
+        android:textSize="50sp"
+        />
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -14,8 +24,6 @@
         android:textSize="30sp"
         android:text=""
         />
-
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,7 +49,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/nextBTN"
-            android:text="@string/next"
+            android:backgroundTint="#0000FF"
+            android:text="NEXT  ->"
             />
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,10 +63,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id = "@+id/hintBTN"
+            android:backgroundTint="@color/black"
+            android:textColor="#EFF1F3"
             android:text="@string/hint_btn"
             />
-
-
 
     </LinearLayout>
 

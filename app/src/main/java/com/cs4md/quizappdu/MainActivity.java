@@ -2,6 +2,7 @@ package com.cs4md.quizappdu;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
     Question[] questions;
     int currentIndex;
     boolean qFlag;
-
     private SharedPreferences mPreferences;
     private String sharedPrefFile= "com.cs4md.android.quizappdu";
     private final String PREVIOUS_SCORE_KEY   = "SCORE";
@@ -54,11 +54,11 @@ public class MainActivity extends AppCompatActivity {
         score = 0;
         qFlag = false;
         message = "";
-        q1 = new Question(getString(R.string.q1_text), true, getString(R.string.q1_hint_url));
-        q2 = new Question(getString(R.string.q2_text), true, getString(R.string.q2_hint_url));
-        q3 = new Question(getString(R.string.q3_text), false, getString(R.string.q3_hint_url));
-        q4 = new Question(getString(R.string.q4_text), false, getString(R.string.q4_hint_url));
-        q5 = new Question(getString(R.string.q5_text), true, getString(R.string.q5_hint_url));
+        q1 = new Question(getString(R.string.q1_text), true, getString(R.string.q1_hint_url), R.raw.q1sound);
+        q2 = new Question(getString(R.string.q2_text), true, getString(R.string.q2_hint_url), R.raw.q2sound);
+        q3 = new Question(getString(R.string.q3_text), false, getString(R.string.q3_hint_url), R.raw.q3sound);
+        q4 = new Question(getString(R.string.q4_text), false, getString(R.string.q4_hint_url), R.raw.q4sound);
+        q5 = new Question(getString(R.string.q5_text), true, getString(R.string.q5_hint_url), R.raw.q1sound);
         questions = new Question[]{q1, q2, q3, q4, q5};
         currentIndex = 0;
         currentQuestion = questions[currentIndex];
@@ -68,16 +68,14 @@ public class MainActivity extends AppCompatActivity {
         //Read initial Value
         int prefScore = mPreferences.getInt(PREVIOUS_SCORE_KEY, 0);
 
-        //Set the Previous Score
-        //String prevScoreString = " "+ prefScore;
-        //prevScoreValTV.setText(prevScoreString);
-
         //3. do whatever you want your app to do with its UI elements
         trueBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!qFlag) {
                     qFlag = true;
+                    //check if user answered the question correctly
+                    //and adjust the score if correct
                     if (currentQuestion.isCorrectAnswer() == true) {
                         message = getString(R.string.correct);
                         score += 5;
@@ -100,6 +98,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!qFlag) {
+                    qFlag = true;
+                    //check whether they answered the question correctly
+                    //and adjust the score if correct
                     if (currentQuestion.isCorrectAnswer() == false) {
                         message = getString(R.string.correct);
                         score += 5;
@@ -110,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
                     myToast = Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT);
                     myToast.show();
                 } else {
+                    //let user know they already answered the question via a toast
                     message = "You already answered this question.";
                     myToast = Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT);
                     myToast.show();
@@ -124,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
                 score -= 2;
                 WebView myWebView = (WebView) findViewById(R.id.hintWV);
                 myWebView.loadUrl(currentQuestion.getHintURL());
+                //Toast not needed but shows the URL for the hint
                 hintToast = Toast.makeText(MainActivity.this, currentQuestion.getHintURL(), Toast.LENGTH_SHORT);
                 hintToast.show();
             }
@@ -134,17 +137,22 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 currentIndex++;
                 qFlag = false;
+
+                //play a sound when moving to next question
+                int tempSound = currentQuestion.getqSound();
+                MediaPlayer questionsSound = MediaPlayer.create(MainActivity.this, tempSound);
+
+                //Save the score to the preferences file
                 SharedPreferences.Editor preferencesEditor = mPreferences.edit();
                 preferencesEditor.putInt(PREVIOUS_SCORE_KEY, score);
                 preferencesEditor.apply();
-                //String prevScoreString = " "+ score;
-                //prevScoreValTV.setText(prevScoreString);
 
-                
                 if (currentIndex < questions.length) {
                     //advance and show the next question
                     currentQuestion = questions[currentIndex];
                     questionTV.setText(currentQuestion.getqText());
+                    //play a sound
+                    questionsSound.start();
                 } else {
                     //move to score activity
                     //declare and initialize intent
