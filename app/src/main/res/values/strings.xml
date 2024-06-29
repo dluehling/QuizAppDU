@@ -18,9 +18,9 @@
     <string name="scoreactivity">ScoreActivity</string>
     <string name="hint_btn">Get a Hint</string>
     <string name="q1_hint_url">https://help.codehs.com/en/articles/661536-ap-csp-performance-task</string>
-    <string name="q2_hint_url">https://www.khanacademy.org/computing/ap-computer-science-principles/algorithms-101/building-algorithms/a/the-building-blocks-of-algorithms</string>
-    <string name="q3_hint_url">https://www.khanacademy.org/computing/ap-computer-science-principles/algorithms-101/building-algorithms/a/the-building-blocks-of-algorithms</string>
-    <string name="q4_hint_url">https://en.wikipedia.org/wiki/Byte</string>
-    <string name="q5_hint_url">https://en.wikipedia.org/wiki/Boolean</string>
+    <string name="q2_hint_url">https://codeinstitute.net/global/blog/what-is-iteration-in-programming/</string>
+    <string name="q3_hint_url">https://www.bbc.co.uk/bitesize/guides/zsf8d2p/revision/1</string>
+    <string name="q4_hint_url">https://web.stanford.edu/class/cs101/bits-bytes.html</string>
+    <string name="q5_hint_url">https://www.codecademy.com/resources/blog/what-is-boolean-logic/</string>
     <string name="scoreactivityprev">scoreActivityPrev</string>
 </resources>
