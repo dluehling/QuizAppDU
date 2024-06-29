@@ -16,11 +16,11 @@
         />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
         android:gravity="center"
         android:id="@+id/PrevScoreTV"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:text="Your Previous Score: "
         />
 

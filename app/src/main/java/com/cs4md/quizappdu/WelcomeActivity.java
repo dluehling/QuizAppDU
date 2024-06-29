@@ -93,7 +93,9 @@ public class WelcomeActivity extends AppCompatActivity {
                 resources = context.getResources();
                 welcomeTV.setText(resources.getString(R.string.welcome_text));
                 String PrevScoreMsg = getString(R.string.previous_score) + previousScore;
-                PrevScoreTV.setText(resources.getString(R.string.previous_score));
+                int previousScore = mPreferences.getInt(PREVIOUS_SCORE_KEY, 0);
+
+                PrevScoreTV.setText(resources.getString(R.string.previous_score)+previousScore);
                 String stBtnText = getString(R.string.start_btn_text);
                 startBTN.setText(resources.getString(R.string.start_btn_text));
             }

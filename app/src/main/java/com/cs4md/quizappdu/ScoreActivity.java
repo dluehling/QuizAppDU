@@ -43,13 +43,13 @@ public class ScoreActivity extends AppCompatActivity {
         newScore = receivedIntent.getIntExtra(getString(R.string.scoreactivity), 0);
 
         previousScore = receivedIntent.getIntExtra(getString(R.string.scoreactivityprev), 0);
-        String msgLabel = getString(R.string.score);
+        String msgLabel = getResources().getString(R.string.score);
         ScoreLabelTV.setText(msgLabel);
         String msg = "" + newScore;
         ScoreTV.setText(msg);
-        String PrevScoreMsg = getString(R.string.previous_score) + previousScore;
+        String PrevScoreMsg = getResources().getString(R.string.previous_score) + previousScore;
         PrevScoreTV.setText(PrevScoreMsg);
-        
+
 
 
 
