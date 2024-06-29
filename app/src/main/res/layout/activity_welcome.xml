@@ -33,4 +33,35 @@
         android:text="Start the Quiz"
         />
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+
+    <!--button view for spanish language-->
+        <Button
+            android:id="@+id/spanishBTN"
+            android:layout_margin="16dp"
+            android:backgroundTint="#0000FF"
+            android:textColor="#ffffff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Español"/>
+
+        <!--button view for english language-->
+        <Button
+            android:id="@+id/englishBTN"
+            android:layout_margin="16dp"
+            android:backgroundTint="#0000FF"
+            android:textColor="#ffffff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="English"/>
+
+    </LinearLayout>
+
+
+
 </LinearLayout>

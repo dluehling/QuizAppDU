@@ -1,6 +1,8 @@
 package com.cs4md.quizappdu;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,6 +25,11 @@ public class ScoreActivity extends AppCompatActivity {
     Button emailBTN;
     int previousScore;
 
+    //added for language translation
+    Context context;
+    Resources resources;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,11 +41,15 @@ public class ScoreActivity extends AppCompatActivity {
         emailBTN = (Button) findViewById(R.id.emailBTN);
         PrevScoreTV = (TextView) findViewById(R.id.prefScoreTV);
         newScore = receivedIntent.getIntExtra(getString(R.string.scoreactivity), 0);
+
         previousScore = receivedIntent.getIntExtra(getString(R.string.scoreactivityprev), 0);
+        String msgLabel = getString(R.string.score);
+        ScoreLabelTV.setText(msgLabel);
         String msg = "" + newScore;
         ScoreTV.setText(msg);
-        String PrevScoreMsg = "Previous Score: " + previousScore;
+        String PrevScoreMsg = getString(R.string.previous_score) + previousScore;
         PrevScoreTV.setText(PrevScoreMsg);
+        
 
 
 

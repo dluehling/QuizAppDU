@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+
 import android.content.SharedPreferences;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -63,6 +65,9 @@ public class MainActivity extends AppCompatActivity {
         currentIndex = 0;
         currentQuestion = questions[currentIndex];
         questionTV.setText(currentQuestion.getqText());
+        String btnText = getString(R.string.next);
+        nextBTN.setText(btnText);
+
 
         mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
         //Read initial Value

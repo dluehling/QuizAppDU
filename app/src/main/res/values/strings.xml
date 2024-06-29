@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">QuizAppDU</string>
+    <string name="welcome_text">Welcome to the CSP Quiz</string>
+    <string name ="start_btn_text">Start the Quiz</string>
     <string name="email_btn_text">Email Score</string>
     <string name="true_btn_text">TRUE</string>
     <string name="q1_text">The Function for the Create Task must have a parameter.</string>
@@ -13,6 +15,7 @@
     <string name="i_just_scored_a">" I just scored a "</string>
     <string name="on_dana_s_csp_quiz">" on Dana's CSP Quiz"</string>
     <string name="score">Score:</string>
+    <string name="previous_score">Previous Score: </string>
     <string name="false_btn_text">FALSE</string>
     <string name="next">Next</string>
     <string name="scoreactivity">ScoreActivity</string>
